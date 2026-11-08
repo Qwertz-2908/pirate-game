@@ -873,7 +873,7 @@ async function pirateJoinRoom(code,playerName){
  if(room.phase==="ended")throw new Error("That game has already ended.");
  if(room.phase!=="waiting")throw new Error("This game has already started. Ask the host to invite you to a new room.");
  const id=piratePlayerId(),startingBank=playerName.trim().toLowerCase()==="reece"?1000000:0;
- const {error:playerError}=await pirateDb.from("pirate_players").upsert({id,room_code:code,name:playerName,score:0,bank:startingBank,shields:0,mirrors:0,choose_tokens:0,active:true,grid:null,tray:null,setup_ready:false,action_done:true,last_reveal_id:null},{onConflict:"id"});
+const {error:playerError}=await pirateDb.from("pirate_players").upsert({id,room_code:code,name:playerName,score:0,bank:startingBank,shields:0,mirrors:0,choose_tokens:0,active:true,grid:null,tray:null,setup_ready:false,action_done:true,last_reveal_id:null},{onConflict:"room_code,id"});
  if(playerError)throw playerError;
  pirateOnlineIsHost=false;await pirateEnterRoom(room,id);
 }
