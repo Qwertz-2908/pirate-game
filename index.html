@@ -1194,7 +1194,7 @@ $("pirateRedo").addEventListener("click",redoPirateMove);
 $("pirateReset").addEventListener("click",()=>{
   pirateMarks={};pirateMoves=[];pirateRedoMoves=[];pirateNames=[];pirateLastRemoved=null;hidePirateToast();clearTimeout(piratePopTimer);clearTimeout(piratePopFadeTimer);pirateBigPop.hidden=true;pirateBigPop.classList.remove("fading");renderPirate();savePirateState();
 });
-$("pirateBack").addEventListener("click",returnToPirateIntro);
+$("pirateBack").addEventListener("click",closePirateGame);
 $("pirateNewGame").addEventListener("click",startNewPirateGame);
 $("pirateLoadGame").addEventListener("click",openPirateOnline);
 $("pirateLoadBack").addEventListener("click",()=>showPirateIntro(true));
